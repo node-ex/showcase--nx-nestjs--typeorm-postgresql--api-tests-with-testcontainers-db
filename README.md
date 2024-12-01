@@ -1,12 +1,15 @@
-# showcase--nx-nestjs--typeorm-postgresql
+# showcase--nx-nestjs--typeorm-postgresql--api-tests-with-testcontainers-db
 
 ## Showcase
 
-1. Run `pnpm install`
+1. Install dependencies using `pnpm install`
 2. Copy `.env.template` as `.env` and add/change values if needed
-3. Start the infra and run migrations using `./scripts/docker-infra-up-sync.sh` or inspect it and run commands manually
-4. Run the app using `pnpm exec nx run app-nest-1:serve`
-5. Enable "REST Client" extension in VSCode and run the requests in `./api/requests.http` file
+3. Run the tests using `pnpm exec nx test app-nest-1`
+4. Troubleshoot tests using the following command
+
+```bash
+npx nx reset && DEBUG=jest-postgres:* pnpm exec nx test app-nest-1 --verbose -- --detectOpenHandles
+```
 
 ## Local development
 
